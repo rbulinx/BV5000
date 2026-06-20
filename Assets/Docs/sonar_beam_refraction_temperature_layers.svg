@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#6fd6ff"/>
+      <stop offset="45%" stop-color="#1d8cc4"/>
+      <stop offset="100%" stop-color="#083b66"/>
+    </linearGradient>
+    <marker id="arrowCyan" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#00f0ff"/>
+    </marker>
+    <marker id="arrowWhite" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#f6fbff"/>
+    </marker>
+    <marker id="arrowYellow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#ffd34d"/>
+    </marker>
+    <style>
+      .label { font-family: "Yu Gothic", "Meiryo", sans-serif; fill: #f6fbff; font-size: 26px; font-weight: 700; }
+      .small { font-family: "Yu Gothic", "Meiryo", sans-serif; fill: #e5f6ff; font-size: 20px; font-weight: 600; }
+      .tiny { font-family: "Yu Gothic", "Meiryo", sans-serif; fill: #d2ebf8; font-size: 17px; font-weight: 500; }
+      .dark { fill: #063553; }
+      .box { fill: rgba(2, 20, 35, 0.65); stroke: rgba(255,255,255,0.45); stroke-width: 2; }
+      .layerLine { stroke: rgba(255,255,255,0.5); stroke-width: 2; stroke-dasharray: 10 10; }
+      .straight { fill: none; stroke: #f6fbff; stroke-width: 5; stroke-dasharray: 14 12; marker-end: url(#arrowWhite); opacity: 0.75; }
+      .bent { fill: none; stroke: #00f0ff; stroke-width: 9; stroke-linecap: round; marker-end: url(#arrowCyan); filter: drop-shadow(0 0 8px #00f0ff); }
+      .normal { stroke: #ffd34d; stroke-width: 4; marker-end: url(#arrowYellow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#061824"/>
+  <rect x="70" y="90" width="900" height="590" rx="10" fill="url(#water)" stroke="#9eeeff" stroke-width="3"/>
+
+  <rect x="70" y="90" width="900" height="150" fill="#69cdf6" opacity="0.68"/>
+  <rect x="70" y="240" width="900" height="160" fill="#209ad0" opacity="0.55"/>
+  <rect x="70" y="400" width="900" height="280" fill="#06436d" opacity="0.52"/>
+
+  <line x1="70" y1="240" x2="970" y2="240" class="layerLine"/>
+  <line x1="70" y1="400" x2="970" y2="400" class="layerLine"/>
+
+  <text x="90" y="65" class="label">Sonar Beam Refraction Through Temperature Layers</text>
+  <text x="92" y="135" class="small">Upper layer: warmer / faster sound speed</text>
+  <text x="92" y="285" class="small">Middle layer: temperature gradient</text>
+  <text x="92" y="445" class="small">Lower layer: colder / slower sound speed</text>
+
+  <text x="785" y="135" class="tiny">larger c</text>
+  <text x="785" y="285" class="tiny">changing c</text>
+  <text x="785" y="445" class="tiny">smaller c</text>
+
+  <circle cx="170" cy="615" r="26" fill="#0b2738" stroke="#d7f7ff" stroke-width="4"/>
+  <path d="M 153 615 L 187 615 M 170 598 L 170 632" stroke="#d7f7ff" stroke-width="5"/>
+  <text x="108" y="665" class="small">Sonar</text>
+
+  <path d="M 170 615 C 260 579, 340 547, 420 514 C 520 470, 610 420, 680 360 C 730 315, 765 265, 790 235" class="bent"/>
+  <path d="M 170 615 L 900 320" class="straight"/>
+
+  <circle cx="790" cy="235" r="18" fill="#ffdd6e" stroke="#fff5c0" stroke-width="4"/>
+  <text x="650" y="225" class="small">Refracted return point</text>
+
+  <circle cx="900" cy="320" r="12" fill="none" stroke="#f6fbff" stroke-width="4" opacity="0.75"/>
+  <text x="755" y="355" class="tiny">Straight-line assumption</text>
+
+  <line x1="680" y1="360" x2="680" y2="265" class="normal"/>
+  <text x="697" y="305" class="tiny">Layer normal</text>
+
+  <rect x="985" y="115" width="165" height="230" rx="8" class="box"/>
+  <text x="1005" y="155" class="small">Why it bends</text>
+  <text x="1005" y="195" class="tiny">When sound speed</text>
+  <text x="1005" y="225" class="tiny">c changes with depth,</text>
+  <text x="1005" y="255" class="tiny">Snell's law changes</text>
+  <text x="1005" y="285" class="tiny">the return point shifts</text>
+  <text x="1005" y="315" class="tiny">up-left from straight.</text>
+
+  <rect x="985" y="375" width="165" height="210" rx="8" class="box"/>
+  <line x1="1008" y1="420" x2="1070" y2="420" class="bent" marker-end="none"/>
+  <text x="1085" y="427" class="tiny">Refracted</text>
+  <line x1="1008" y1="470" x2="1070" y2="470" class="straight" marker-end="none"/>
+  <text x="1085" y="477" class="tiny">Straight</text>
+  <circle cx="1038" cy="525" r="10" fill="#ffdd6e" stroke="#fff5c0" stroke-width="3"/>
+  <text x="1060" y="532" class="tiny">Return point</text>
+
+  <text x="90" y="720" class="tiny">BV5000 implementation concept: compute sound speed c(z) from the temperature profile and update the beam direction over short steps.</text>
+</svg>
